@@ -1,0 +1,8 @@
+.venv/
+logs/
+.env
+.idea
+*__pycache__
+artifacts/
+frontend/
+backend/

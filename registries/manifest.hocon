@@ -3,4 +3,5 @@
     "six_thinking_hats.hocon": true,
     "customer_support.hocon": true,
     "architect.hocon": true,
+    "codegen.hocon": true,
 }

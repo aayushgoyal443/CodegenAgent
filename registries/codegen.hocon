@@ -1,0 +1,199 @@
+{
+    "llm_config": {
+        "model_name": "gemini-2.0-flash"
+    },
+    "max_iterations": 100,
+    "max_execution_seconds": 300,
+    "enable_internal_chat": true,
+    "enable_visualization": true,
+    "tools": [
+        # Front Man Agent - Coordinates the code generation process
+        {
+            "name": "codegen_frontman",
+            "function": {
+                "description": "Coordinates the code generation process by taking file paths for HLD and LLD documents and managing the code generation workflow.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "hld_file_path": {
+                            "type": "string",
+                            "description": "File path to the High Level Design document"
+                        },
+                        "lld_file_path": {
+                            "type": "string",
+                            "description": "File path to the Low Level Design document"
+                        },
+                        "project_name": {
+                            "type": "string",
+                            "description": "Name of the project"
+                        }
+                    },
+                    "required": ["hld_file_path", "lld_file_path", "project_name"]
+                }
+            },
+            "instructions": """
+                You are the Code Generation Front Man. Your role is to coordinate the entire code generation process:
+
+                PHASE 1 - ANALYSIS:
+                1. Read and validate HLD document from hld_file_path using read_file tool
+                2. Read and validate LLD document from lld_file_path using read_file tool
+                3. Extract key requirements, architecture, and technical specifications
+                4. Identify programming language, frameworks, and dependencies
+
+                PHASE 2 - PLANNING:
+                5. Break down requirements into logical components/modules
+                6. Determine code generation sequence and dependencies
+                7. Create detailed specifications for each component
+
+                PHASE 3 - CODE GENERATION:
+                8. Call code_generator agent for each component with:
+                - Clear specifications
+                - Dependencies and interfaces
+                - Testing requirements
+                9. Ensure proper integration between components
+                10. Validate generated code meets HLD/LLD requirements
+
+                PHASE 4 - DELIVERY:
+                11. Organize generated code in proper project structure
+                12. Generate project documentation and README
+                13. Report comprehensive status and results
+
+                Handle errors gracefully and provide detailed progress updates throughout the process.
+                """,
+            "tools": ["code_generator", "read_file"]
+        },
+
+        # Code Generator Agent - Generates code based on specifications
+        {
+            "name": "code_generator",
+            "function": {
+                "description": "Generates clean, functional code based on provided specifications and design documents.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "component_name": {
+                            "type": "string",
+                            "description": "Name of the component being implemented"
+                        },
+                        "specifications": {
+                            "type": "string",
+                            "description": "Detailed specifications for the code to be generated"
+                        },
+                        "programming_language": {
+                            "type": "string",
+                            "description": "Target programming language for code generation",
+                            "default": "python"
+                        },
+                        "output_file_path": {
+                            "type": "string",
+                            "description": "Target file path where the generated code should be saved"
+                        }
+                    },
+                    "required": ["component_name", "specifications", "programming_language", "output_file_path"]
+                }
+            },
+            "instructions": """
+                You are a Code Generator. Your mission is to generate clean, functional code and save it to the specified file path.
+
+                    ## EXECUTION PHASES - FOLLOW SEQUENTIALLY:
+
+                    ### PHASE 1 - CODE ANALYSIS:
+                    1. Analyze the component specifications thoroughly
+                    2. Identify the programming language and required structure
+                    3. Plan the code architecture and dependencies needed
+
+                    ### PHASE 2 - CODE GENERATION:
+                    4. Generate complete, functional code that includes:
+                    - All necessary imports and dependencies
+                    - Proper error handling and edge cases
+                    - Clear comments and documentation
+                    - Best practices for the target language
+                    - Well-structured, readable code
+
+                    ### PHASE 3 - CODE VALIDATION:
+                    5. Review the generated code for completeness
+                    6. Ensure it meets all specification requirements
+                    7. Verify proper syntax and structure
+
+                    ### PHASE 4 - FILE SAVING (MANDATORY):
+                    8. **ALWAYS call the file_writer tool** with:
+                    - file_path: Use the exact output_file_path parameter provided
+                    - content: The complete generated code as a string
+                    - mode: "w" (to overwrite existing content)
+                    - create_dirs: true (to create necessary directories)
+
+                    9. Confirm successful file save in your response
+
+                """,
+            "tools": ["file_writer"]
+        },
+
+        # File Reading Tool
+        {
+            "name": "read_file",
+            "function": {
+                "description": "Reads the contents of a file from the local filesystem.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "file_path": {
+                            "type": "string",
+                            "description": "Path to the file to read"
+                        },
+                        "start_line": {
+                            "type": "int",
+                            "description": "Starting line number (1-based)",
+                            "default": 1
+                        },
+                        "end_line": {
+                            "type": "int",
+                            "description": "Ending line number (inclusive)",
+                            "default": None
+                        }
+                    },
+                    "required": ["file_path"]
+                }
+            },
+            "class": "file_operations.file_reader.FileReader"
+        },
+
+        # File Writing Tool
+        {
+            "name": "file_writer",
+            "function": {
+                "description": "Writes content to a file on the local filesystem.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "file_path": {
+                            "type": "string",
+                            "description": "Path where the file should be written"
+                        },
+                        "content": {
+                            "type": "string",
+                            "description": "Content to write to the file"
+                        },
+                        "mode": {
+                            "type": "string",
+                            "description": "File mode ('w' for write, 'a' for append)",
+                            "enum": ["w", "a", "w+", "a+"],
+                            "default": "w"
+                        },
+                        "encoding": {
+                            "type": "string",
+                            "description": "File encoding to use",
+                            "default": "utf-8"
+                        },
+                        "create_dirs": {
+                            "type": "boolean",
+                            "description": "Create parent directories if they don't exist",
+                            "default": true
+                        }
+                    },
+                    "required": ["file_path", "content"]
+                }
+            },
+            "class": "file_operations.file_writer.FileWriter"
+        }
+    ]
+}
