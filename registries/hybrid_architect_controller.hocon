@@ -1,0 +1,298 @@
+# Hybrid SDLC Architect Controller - Multi-Agent Network
+# ======================================================
+# Following six_thinking_hats pattern for proper 9-agent visualization
+
+{
+    "llm_config": {
+        "model_name": "claude-3-5-sonnet-20241022",
+        "provider": "anthropic",
+        "temperature": 0.7,
+        "max_tokens": 4096,
+    },
+
+    # Configuration for multi-agent workflows
+    "max_iterations": 50,
+    "recursion_limit": 25,
+    "enable_internal_chat": true,
+    "enable_visualization": true,
+
+    "tools": [
+        # Main Architect Controller - Orchestrates all 9 sub-agents
+        {
+            "name": "architect_controller",
+            "function": {
+                "description": "I am the Hybrid SDLC Architect Controller, orchestrating a team of 9 specialized agents to design comprehensive software architectures."
+            },
+            "instructions": "You are the Architect Controller, managing the architecture design process. You will gather insights from all 9 specialized agents and synthesize them into a complete architecture design document.",
+            "tools": ["requirements_analyzer", "domain_expert", "pattern_matcher", "hld_generator", "lld_generator", "tech_stack_advisor", "security_architect", "scalability_planner", "cost_estimator"],
+            "llm_config": {
+                "model_name": "claude-3-5-sonnet-20241022",
+                "temperature": 0.6,
+                "max_tokens": 4096,
+            }
+        },
+
+        {
+            "name": "requirements_analyzer",
+            "function": {
+                "description": "Analyzes and structures software requirements.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "raw_requirements": {
+                            "type": "string",
+                            "description": "Raw requirements to analyze"
+                        }
+                    },
+                    "required": ["raw_requirements"]
+                }
+            },
+            "instructions": "You are the Requirements Analyzer. Parse and structure the given requirements into functional, non-functional, constraints, and acceptance criteria.",
+            "command": "Analyze and structure the raw_requirements into organized categories.",
+            "llm_config": {
+                "model_name": "claude-3-5-sonnet-20241022",
+                "temperature": 0.3,
+                "max_tokens": 2048,
+            }
+        },
+
+        {
+            "name": "domain_expert",
+            "function": {
+                "description": "Provides domain-specific expertise and industry best practices.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "requirements_analysis": {
+                            "type": "string",
+                            "description": "Structured requirements to analyze"
+                        }
+                    },
+                    "required": ["requirements_analysis"]
+                }
+            },
+            "instructions": "You are the Domain Expert. Analyze the requirements from an industry perspective, providing domain-specific best practices and regulatory requirements.",
+            "command": "Provide domain expertise and industry best practices for the requirements_analysis.",
+            "llm_config": {
+                "model_name": "claude-3-5-sonnet-20241022",
+                "temperature": 0.5,
+                "max_tokens": 3072,
+            }
+        },
+
+        {
+            "name": "pattern_matcher",
+            "function": {
+                "description": "Identifies and recommends optimal architectural patterns.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "requirements_analysis": {
+                            "type": "object",
+                            "description": "Structured requirements analysis"
+                        },
+                        "domain_context": {
+                            "type": "object",
+                            "description": "Domain expertise and business context"
+                        }
+                    },
+                    "required": ["requirements_analysis"]
+                }
+            },
+            "instructions": "You are the Pattern Matcher. Identify the most suitable architectural patterns based on the requirements and domain context.",
+            "command": "Identify optimal architectural patterns for the given requirements.",
+            "llm_config": {
+                "model_name": "claude-3-5-sonnet-20241022",
+                "temperature": 0.4,
+                "max_tokens": 2048,
+            }
+        },
+
+        {
+            "name": "hld_generator",
+            "function": {
+                "description": "Creates comprehensive high-level design documents.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "requirements": {
+                            "type": "object",
+                            "description": "Structured requirements analysis"
+                        },
+                        "domain_analysis": {
+                            "type": "object",
+                            "description": "Domain expert analysis"
+                        },
+                        "patterns": {
+                            "type": "object",
+                            "description": "Recommended architectural patterns"
+                        }
+                    },
+                    "required": ["requirements", "patterns"]
+                }
+            },
+            "instructions": "You are the HLD Generator. Create comprehensive high-level design including system architecture and component relationships.",
+            "command": "Generate detailed high-level design based on requirements and patterns.",
+            "llm_config": {
+                "model_name": "claude-3-5-sonnet-20241022",
+                "temperature": 0.6,
+                "max_tokens": 4096,
+            }
+        },
+
+        {
+            "name": "lld_generator",
+            "function": {
+                "description": "Creates detailed low-level design specifications.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "hld": {
+                            "type": "object",
+                            "description": "High-level design document"
+                        },
+                        "requirements": {
+                            "type": "object",
+                            "description": "Original requirements analysis"
+                        }
+                    },
+                    "required": ["hld"]
+                }
+            },
+            "instructions": "You are the LLD Generator. Create detailed low-level design specifications including component internals and API specifications.",
+            "command": "Generate detailed low-level design based on the hld.",
+            "llm_config": {
+                "model_name": "claude-3-5-sonnet-20241022",
+                "temperature": 0.5,
+                "max_tokens": 3072,
+            }
+        },
+
+        {
+            "name": "tech_stack_advisor",
+            "function": {
+                "description": "Recommends optimal technology stacks.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "hld": {
+                            "type": "string",
+                            "description": "High-level design document"
+                        }
+                    },
+                    "required": ["hld"]
+                }
+            },
+            "instructions": "You are the Tech Stack Advisor. Recommend optimal technology stack including frameworks, databases, and cloud services based on the architecture design.",
+            "command": "Recommend optimal technology stack based on the hld.",
+            "llm_config": {
+                "model_name": "claude-3-5-sonnet-20241022",
+                "temperature": 0.4,
+                "max_tokens": 2048,
+            }
+        },
+
+        {
+            "name": "security_architect",
+            "function": {
+                "description": "Ensures security best practices and compliance.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "lld": {
+                            "type": "string",
+                            "description": "Low-level design document"
+                        }
+                    },
+                    "required": ["lld"]
+                }
+            },
+            "instructions": "You are the Security Architect. Analyze the design for security vulnerabilities and ensure compliance with security frameworks (OWASP, GDPR, etc.).",
+            "command": "Provide security analysis and recommendations for the lld.",
+            "llm_config": {
+                "model_name": "claude-3-5-sonnet-20241022",
+                "temperature": 0.2,
+                "max_tokens": 2048,
+            }
+        },
+
+        {
+            "name": "scalability_planner",
+            "function": {
+                "description": "Plans for system scalability and performance.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "lld": {
+                            "type": "string",
+                            "description": "Low-level design document"
+                        },
+                        "tech_stack": {
+                            "type": "string",
+                            "description": "Technology stack recommendations"
+                        }
+                    },
+                    "required": ["lld", "tech_stack"]
+                }
+            },
+            "instructions": "You are the Scalability Planner. Analyze the design for scalability bottlenecks and recommend scaling strategies.",
+            "command": "Analyze scalability and provide performance planning for lld and tech_stack.",
+            "llm_config": {
+                "model_name": "claude-3-5-sonnet-20241022",
+                "temperature": 0.3,
+                "max_tokens": 2048,
+            }
+        },
+
+        {
+            "name": "cost_estimator",
+            "function": {
+                "description": "Estimates development and operational costs.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "tech_stack": {
+                            "type": "string",
+                            "description": "Technology stack recommendations"
+                        }
+                    },
+                    "required": ["tech_stack"]
+                }
+            },
+            "instructions": "You are the Cost Estimator. Provide comprehensive cost analysis including development costs, operational costs, and ROI projections.",
+            "command": "Estimate costs and provide budget analysis for the tech_stack.",
+            "llm_config": {
+                "model_name": "claude-3-haiku-20240307",
+                "temperature": 0.1,
+                "max_tokens": 1024,
+            }
+        }
+    ],
+
+    # Workflow definition for the agent network
+    "workflow": {
+        "name": "hybrid_architecture_workflow",
+        "description": "Complete architecture design workflow using 9 specialized agents",
+        "steps": [
+            "architect_controller -> requirements_analyzer",
+            "requirements_analyzer -> [domain_expert, pattern_matcher]",
+            "[domain_expert, pattern_matcher] -> hld_generator",
+            "hld_generator -> [lld_generator, tech_stack_advisor]",
+            "[lld_generator, tech_stack_advisor] -> [security_architect, scalability_planner]",
+            "[security_architect, scalability_planner] -> cost_estimator",
+            "cost_estimator -> architect_controller"
+        ]
+    },
+
+    # Agent network metadata
+    "metadata": {
+        "name": "Hybrid SDLC Architect Controller",
+        "version": "1.0.0",
+        "description": "Enterprise-grade software architecture design using 9 specialized AI agents",
+        "author": "Hybrid SDLC Team",
+        "tags": ["architecture", "sdlc", "enterprise", "hybrid", "langgraph", "neuro-san"],
+        "agent_count": 9,
+        "complexity": "high",
+        "domain": "software_architecture"
+    }
+}

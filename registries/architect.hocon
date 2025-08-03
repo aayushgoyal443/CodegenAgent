@@ -1,0 +1,127 @@
+{
+    "llm_config": {
+        "model_name": "claude-3-haiku",
+    },
+    "max_iterations": 100,
+    "max_execution_seconds": 300,
+    "enable_internal_chat": true,
+    "enable_visualization": true,
+    "tools": [
+        # First is going to be the Front man agent
+        {
+            "name": "mudit",
+            "function": {
+                "description": """
+I can help you to write the HLD and LLD document for the project.
+Tell me your product requirements and I will create comprehensive HLD and LLD documents.
+The documents will be saved as markdown files in the generated_docs folder.
+"""
+            },
+            "instructions": """
+You are a software architect that creates HLD and LLD documents. When given project requirements:
+1. Immediately call hld_agent with requirements and project_name
+2. Once HLD is complete, immediately call lld_agent with requirements, hld_content, and project_name
+3. Report completion status to user
+Be direct and efficient - no unnecessary back-and-forth.
+""",
+            "tools": ["hld_agent", "lld_agent"]
+        },
+        # HLD agent
+        {
+            "name": "hld_agent",
+            "function": {
+                "description": "Creates High Level Design documents based on product requirements and saves them as markdown files",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "requirements": {
+                            "type": "string",
+                            "description": "Product requirements to base the HLD on"
+                        },
+                        "project_name": {
+                            "type": "string", 
+                            "description": "Name of the project for file naming"
+                        }
+                    },
+                    "required": ["requirements", "project_name"]
+                }
+            },
+            "instructions": """
+Create a High Level Design document. Write comprehensive HLD content in markdown format with:
+- Executive Summary
+- System Architecture Overview  
+- Major Components
+- Technology Stack
+- Integration Points
+
+Then call markdown_writer tool to save the document. Use the project_name parameter to create a meaningful filename.
+Return the HLD content after saving.
+""",
+            "tools": ["markdown_writer"]
+        },
+        # LLD agent
+        {
+            "name": "lld_agent",
+            "function": {
+                "description": "Creates Low Level Design documents based on product requirements and HLD context, saves them as markdown files",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "requirements": {
+                            "type": "string",
+                            "description": "Product requirements to base the LLD on"
+                        },
+                        "hld_content": {
+                            "type": "string",
+                            "description": "High Level Design content for reference"
+                        },
+                        "project_name": {
+                            "type": "string",
+                            "description": "Name of the project for file naming"
+                        }
+                    },
+                    "required": ["requirements", "hld_content", "project_name"]
+                }
+            },
+            "instructions": """
+Create a Low Level Design document using the requirements and HLD content.
+Write detailed LLD with:
+- Component Architecture
+- Database Design
+- API Specifications
+- Implementation Details
+- Testing Strategy
+
+Then call markdown_writer tool to save the document. Use the project_name parameter to create a meaningful filename.
+Return confirmation that LLD is saved.
+""",
+            "tools": ["markdown_writer"]
+        },
+        # Markdown Writer coded tool
+        {
+            "name": "markdown_writer",
+            "function": {
+                "description": "Writes content to markdown files",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "file_name": {
+                            "type": "string",
+                            "description": "Name of the markdown file (without .md extension)"
+                        },
+                        "content": {
+                            "type": "string", 
+                            "description": "Markdown content to write to file"
+                        },
+                        "append": {
+                            "type": "boolean",
+                            "description": "If true, append to existing file; if false, overwrite (default: false)"
+                        }
+                    },
+                    "required": ["file_name", "content"]
+                }
+            },
+            "class": "markdown_writer.MarkdownWriter"
+        }   
+    ]
+}

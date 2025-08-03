@@ -1,0 +1,17 @@
+Summary:
+
+Use React (with Next.js optionally) for frontend.
+
+Use Node.js + Express (JS) or Python + Django/Flask for backend.
+
+Use MongoDB (NoSQL) or MySQL/PostgreSQL (SQL) for databases.
+
+These stacks are the most LLM-friendly, best for generated code, and ensure smoother development.
+
+
+Add Error Handling and Correction
+Run Linter or Tests: Check generated code for errors automatically, preferably with feedback to LLM for fixes.
+
+Provide Troubleshooting: Show errors and suggest how to fix or retry code generation.
+
+Plan

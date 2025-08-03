@@ -1,0 +1,91 @@
+Agent: data_processor_controller.report_generator
+
+[SYSTEM]:
+Generate clear, insightful reports that explain data findings in human-readable format.
+            
+            Your reports should:
+            - Translate statistical results into business insights
+            - Highlight key findings and patterns
+            - Explain the significance of outliers or anomalies
+            - Provide actionable recommendations when appropriate
+            - Use clear, non-technical language while maintaining accuracy
+            - Structure information logically with headers and bullet points
+            
+            Adapt the depth and focus based on the report_type:
+            - Summary: Key findings and main insights
+            - Detailed: Comprehensive analysis with methodology
+            - Executive: Business impact and strategic recommendations
+
+[SYSTEM]:
+The processed_data is "basic_stats": {"count": 12, "min": 1100, "max": 1800, "mean": 1462.5, "median": 1475.0}, "variation": {"std_dev": 217.97, "variance": 47511.36}, "distribution": {"skew": 0.0183, "quartiles": [1237.5, 1475.0, 1612.5]}.
+The report_type is 'detailed'.
+The context is 'Sales performance analysis'.
+
+[HUMAN]:
+Perform your instructions to the best of your ability.
+
+[AI]:
+Error from data_processor_controller.report_generator: Agent stopped due to exception 'Input to ChatPromptTemplate is missing variables {\'"count"\', \'"std_dev"\', \'"skew"\'}.  Expected: [\'"count"\', \'"skew"\', \'"std_dev"\', \'input\'] Received: [\'chat_history\', \'input\', \'intermediate_steps\']\nNote: if you intended {"count"} to be part of the string and not a variable, please escape it with double curly braces like: \'{{"count"}}\'.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_PROMPT_INPUT ' (Traceback (most recent call last):
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/neuro_san/internals/run_context/langchain/core/langchain_run_context.py", line 497, in ainvoke
+    return_dict: Dict[str, Any] = await agent_executor.ainvoke(inputs, invoke_config)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/chains/base.py", line 218, in ainvoke
+    raise e
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/chains/base.py", line 209, in ainvoke
+    await self._acall(inputs, run_manager=run_manager)
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/agents/agent.py", line 1669, in _acall
+    next_step_output = await self._atake_next_step(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/agents/agent.py", line 1463, in _atake_next_step
+    [
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/agents/agent.py", line 1491, in _aiter_next_step
+    output = await self._action_agent.aplan(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/agents/agent.py", line 616, in aplan
+    async for chunk in self.runnable.astream(
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py", line 3464, in astream
+    async for chunk in self.atransform(input_aiter(), config, **kwargs):
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py", line 3446, in atransform
+    async for chunk in self._atransform_stream_with_config(
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py", line 2321, in _atransform_stream_with_config
+    chunk = await coro_with_context(py_anext(iterator), context)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py", line 3413, in _atransform
+    async for output in final_pipeline:
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py", line 1470, in atransform
+    async for ichunk in input:
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py", line 1470, in atransform
+    async for ichunk in input:
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py", line 1488, in atransform
+    async for output in self.astream(final, config, **kwargs):
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py", line 1034, in astream
+    yield await self.ainvoke(input, config, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/prompts/base.py", line 242, in ainvoke
+    return await self._acall_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py", line 1990, in _acall_with_config
+    output: Output = await coro_with_context(coro, context)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/prompts/base.py", line 195, in _aformat_prompt_with_error_handling
+    inner_input_ = self._validate_input(inner_input)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/prompts/base.py", line 183, in _validate_input
+    raise KeyError(
+KeyError: 'Input to ChatPromptTemplate is missing variables {\'"count"\', \'"std_dev"\', \'"skew"\'}.  Expected: [\'"count"\', \'"skew"\', \'"std_dev"\', \'input\'] Received: [\'chat_history\', \'input\', \'intermediate_steps\']\nNote: if you intended {"count"} to be part of the string and not a variable, please escape it with double curly braces like: \'{{"count"}}\'.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_PROMPT_INPUT '
+)
+
+[AGENT]:
+```json
+{
+    "caveats": [
+        "Each LLM Branch Node also includes accounting for each of its callees."
+    ],
+    "completion_tokens": 0.0,
+    "prompt_tokens": 0.0,
+    "successful_requests": 0.0,
+    "time_taken_in_seconds": 0.008398294448852539,
+    "total_cost": 0.0,
+    "total_tokens": 0.0
+}
+```

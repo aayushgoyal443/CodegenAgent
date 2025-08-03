@@ -1,0 +1,291 @@
+Agent: data_processor_controller
+
+[SYSTEM]:
+You are a data processing specialist with access to powerful computational tools. 
+            
+            Your workflow:
+            1. Receive data processing requests from users
+            2. Determine if coded tools are needed for computational tasks
+            3. Use the data_analyzer_coded_tool for complex calculations, statistics, and transformations
+            4. Apply AI reasoning to interpret results and provide insights
+            5. Generate comprehensive reports that combine computational results with human-readable analysis
+            
+            When to use coded tools:
+            - Statistical calculations and data analysis
+            - Data filtering and transformation operations
+            - Outlier detection and data quality assessment
+            - Mathematical operations requiring precision
+            
+            When to use AI reasoning:
+            - Interpreting statistical results
+            - Providing business insights and recommendations  
+            - Explaining findings in context
+            - Generating narrative reports
+
+[SYSTEM]:
+You are a data processing specialist with access to powerful computational tools. 
+            
+            Your workflow:
+            1. Receive data processing requests from users
+            2. Determine if coded tools are needed for computational tasks
+            3. Use the data_analyzer_coded_tool for complex calculations, statistics, and transformations
+            4. Apply AI reasoning to interpret results and provide insights
+            5. Generate comprehensive reports that combine computational results with human-readable analysis
+            
+            When to use coded tools:
+            - Statistical calculations and data analysis
+            - Data filtering and transformation operations
+            - Outlier detection and data quality assessment
+            - Mathematical operations requiring precision
+            
+            When to use AI reasoning:
+            - Interpreting statistical results
+            - Providing business insights and recommendations  
+            - Explaining findings in context
+            - Generating narrative reports
+
+[HUMAN]:
+Analyze this sales data: [1200, 1450, 1100, 1600, 1300, 1800, 1250, 1500, 1400, 1650, 1550, 1750] and provide insights on performance trends and outliers.
+
+
+
+
+
+[AGENT]:
+I'll help analyze this sales data using our tools to provide comprehensive insights. Let's break this down into two steps:
+
+1. First, let's use the data analyzer tool to perform a comprehensive analysis of the data
+2. Then, generate a report with insights based on the analysis
+
+Here are the tool calls:
+
+[AGENT]:
+Invoking: `data_analyzer_coded_tool` with `{'operation': 'analyze', 'data': [1200, 1450, 1100, 1600, 1300, 1800, 1250, 1500, 1400, 1650, 1550, 1750]}`
+responded: [{'text': "I'll help analyze this sales data using our tools to provide comprehensive insights. Let's break this down into two steps:\n\n1. First, let's use the data analyzer tool to perform a comprehensive analysis of the data\n2. Then, generate a report with insights based on the analysis\n\nHere are the tool calls:", 'type': 'text', 'index': 0}, {'id': 'toolu_01C4srYY1f6Ea4fGnhnjqQzw', 'input': {}, 'name': 'data_analyzer_coded_tool', 'type': 'tool_use', 'index': 1, 'partial_json': '{"operation": "analyze", "data": [1200,1450,1100,1600,1300,1800,1250,1500,1400,1650,1550,1750]}'}]
+
+[AGENT]:
+I'll help analyze this sales data using our tools to provide comprehensive insights. Let's break this down into two steps:
+
+1. First, let's use the data_analyzer_coded_tool to perform a comprehensive analysis of the data
+2. Then, we'll generate a detailed report with insights
+
+Here are the tool calls:
+
+[AGENT]:
+Invoking: `data_analyzer_coded_tool` with `{'operation': 'analyze', 'data': [1200, 1450, 1100, 1600, 1300, 1800, 1250, 1500, 1400, 1650, 1550, 1750]}`
+responded: [{'text': "I'll help analyze this sales data using our tools to provide comprehensive insights. Let's break this down into two steps:\n\n1. First, let's use the data_analyzer_coded_tool to perform a comprehensive analysis of the data\n2. Then, we'll generate a detailed report with insights\n\nHere are the tool calls:", 'type': 'text', 'index': 0}, {'id': 'toolu_01PatkScaVqGT4DZcVbGiTq4', 'input': {}, 'name': 'data_analyzer_coded_tool', 'type': 'tool_use', 'index': 1, 'partial_json': '{"operation": "analyze", "data": [1200,1450,1100,1600,1300,1800,1250,1500,1400,1650,1550,1750]}'}]
+
+[AGENT]:
+I'll help analyze this sales data using our tools to provide comprehensive insights. Let's break this down into two steps:
+
+1. First, let's use the data analyzer tool to perform a comprehensive analysis of the data
+2. Then, generate a report with insights based on the results
+
+Here are the tool calls:
+
+[AGENT]:
+Invoking: `data_analyzer_coded_tool` with `{'operation': 'analyze', 'data': [1200, 1450, 1100, 1600, 1300, 1800, 1250, 1500, 1400, 1650, 1550, 1750]}`
+responded: [{'text': "I'll help analyze this sales data using our tools to provide comprehensive insights. Let's break this down into two steps:\n\n1. First, let's use the data analyzer tool to perform a comprehensive analysis of the data\n2. Then, generate a report with insights based on the results\n\nHere are the tool calls:", 'type': 'text', 'index': 0}, {'id': 'toolu_01V1sA8C1XhhDDmx67LzMEZV', 'input': {}, 'name': 'data_analyzer_coded_tool', 'type': 'tool_use', 'index': 1, 'partial_json': '{"operation": "analyze", "data": [1200,1450,1100,1600,1300,1800,1250,1500,1400,1650,1550,1750]}'}]
+
+[AI]:
+Error from data_processor_controller: Agent stopped due to exception 12 validation errors for parameters
+data -> 0
+  value is not None (type=type_error.not_none)
+data -> 1
+  value is not None (type=type_error.not_none)
+data -> 2
+  value is not None (type=type_error.not_none)
+data -> 3
+  value is not None (type=type_error.not_none)
+data -> 4
+  value is not None (type=type_error.not_none)
+data -> 5
+  value is not None (type=type_error.not_none)
+data -> 6
+  value is not None (type=type_error.not_none)
+data -> 7
+  value is not None (type=type_error.not_none)
+data -> 8
+  value is not None (type=type_error.not_none)
+data -> 9
+  value is not None (type=type_error.not_none)
+data -> 10
+  value is not None (type=type_error.not_none)
+data -> 11
+  value is not None (type=type_error.not_none) (Traceback (most recent call last):
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/neuro_san/internals/run_context/langchain/core/langchain_run_context.py", line 497, in ainvoke
+    return_dict: Dict[str, Any] = await agent_executor.ainvoke(inputs, invoke_config)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/chains/base.py", line 218, in ainvoke
+    raise e
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/chains/base.py", line 209, in ainvoke
+    await self._acall(inputs, run_manager=run_manager)
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/agents/agent.py", line 1669, in _acall
+    next_step_output = await self._atake_next_step(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/agents/agent.py", line 1463, in _atake_next_step
+    [
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/agents/agent.py", line 1547, in _aiter_next_step
+    result = await asyncio.gather(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/agents/agent.py", line 1580, in _aperform_agent_action
+    observation = await tool.arun(
+                  ^^^^^^^^^^^^^^^^
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/tools/base.py", line 996, in arun
+    raise error_to_raise
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/tools/base.py", line 953, in arun
+    tool_args, tool_kwargs = self._to_args_and_kwargs(tool_input, tool_call_id)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/tools/base.py", line 760, in _to_args_and_kwargs
+    tool_input = self._parse_input(tool_input, tool_call_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/tools/base.py", line 685, in _parse_input
+    result = input_args.parse_obj(tool_input)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/pydantic/v1/main.py", line 532, in parse_obj
+    return cls(**obj)
+           ^^^^^^^^^^
+  File "/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/pydantic/v1/main.py", line 347, in __init__
+    raise validation_error
+pydantic.v1.error_wrappers.ValidationError: 12 validation errors for parameters
+data -> 0
+  value is not None (type=type_error.not_none)
+data -> 1
+  value is not None (type=type_error.not_none)
+data -> 2
+  value is not None (type=type_error.not_none)
+data -> 3
+  value is not None (type=type_error.not_none)
+data -> 4
+  value is not None (type=type_error.not_none)
+data -> 5
+  value is not None (type=type_error.not_none)
+data -> 6
+  value is not None (type=type_error.not_none)
+data -> 7
+  value is not None (type=type_error.not_none)
+data -> 8
+  value is not None (type=type_error.not_none)
+data -> 9
+  value is not None (type=type_error.not_none)
+data -> 10
+  value is not None (type=type_error.not_none)
+data -> 11
+  value is not None (type=type_error.not_none)
+)
+
+[AGENT]:
+```json
+{
+    "caveats": [
+        "Each LLM Branch Node also includes accounting for each of its callees."
+    ],
+    "completion_tokens": 564.0,
+    "prompt_tokens": 3174.0,
+    "successful_requests": 3.0,
+    "time_taken_in_seconds": 18.240235090255737,
+    "total_cost": 0.017981999999999998,
+    "total_tokens": 3738.0
+}
+```
+
+[SYSTEM]:
+You are a data processing specialist with access to powerful computational tools. 
+            
+            Your workflow:
+            1. Receive data processing requests from users
+            2. Determine if coded tools are needed for computational tasks
+            3. Use the data_analyzer_coded_tool for complex calculations, statistics, and transformations
+            4. Apply AI reasoning to interpret results and provide insights
+            5. Generate comprehensive reports that combine computational results with human-readable analysis
+            
+            When to use coded tools:
+            - Statistical calculations and data analysis
+            - Data filtering and transformation operations
+            - Outlier detection and data quality assessment
+            - Mathematical operations requiring precision
+            
+            When to use AI reasoning:
+            - Interpreting statistical results
+            - Providing business insights and recommendations  
+            - Explaining findings in context
+            - Generating narrative reports
+
+[HUMAN]:
+Analyze this sales data: [1200, 1450, 1100, 1600, 1300, 1800, 1250, 1500, 1400, 1650, 1550, 1750] and provide insights on performance trends and outliers.
+
+[AGENT]:
+I'll help analyze this sales data using the data analyzer tool and then generate a comprehensive report with insights.
+
+First, let's analyze the data using the data_analyzer_coded_tool:
+
+[AGENT]:
+Invoking: `data_analyzer_coded_tool` with `{'operation': 'analyze', 'data': '1200,1450,1100,1600,1300,1800,1250,1500,1400,1650,1550,1750'}`
+responded: [{'text': "I'll help analyze this sales data using the data analyzer tool and then generate a comprehensive report with insights.\n\nFirst, let's analyze the data using the data_analyzer_coded_tool:", 'type': 'text', 'index': 0}, {'id': 'toolu_017986ezFZT7NLpuMSEh8cdK', 'input': {}, 'name': 'data_analyzer_coded_tool', 'type': 'tool_use', 'index': 1, 'partial_json': '{"operation": "analyze", "data": "1200,1450,1100,1600,1300,1800,1250,1500,1400,1650,1550,1750"}'}]
+
+[AGENT_TOOL_RESULT (result from data_analyzer_coded_tool)]:
+I'll analyze the numerical data provided and perform statistical calculations:\n\nData Analysis Results:\n\n1. Basic Statistics:\n- Count: 12 values\n- Minimum: 1100\n- Maximum: 1800\n- Range: 700\n\n2. Central Tendency:\n- Mean: 1462.50\n- Median: 1475.00\n- Mode: No clear mode (all values unique)\n\n3. Dispersion:\n- Standard Deviation: 217.97\n- Variance: 47,511.36\n- Quartiles:\n  * Q1 (25th percentile): 1237.50\n  * Q2 (50th percentile): 1475.00\n  * Q3 (75th percentile): 1612.50\n- Interquartile Range (IQR): 375\n\n4. Distribution:\n- The data appears to be fairly evenly distributed\n- No obvious outliers based on the 1.5 IQR rule\n- Slight positive skew: 0.0183\n\n5. Data Quality:\n- All values are numeric\n- No missing values\n- Data appears consistent and within reasonable range\n- No duplicate values present\n\nWould you like any additional specific calculations or analysis of this dataset?
+
+[AGENT]:
+Now, let's generate a detailed report with insights:
+
+[AGENT]:
+Invoking: `report_generator` with `{'report_type': 'detailed', 'processed_data': {'basic_stats': {'count': 12, 'min': 1100, 'max': 1800, 'mean': 1462.5, 'median': 1475.0}, 'variation': {'std_dev': 217.97, 'variance': 47511.36}, 'distribution': {'skew': 0.0183, 'quartiles': [1237.5, 1475.0, 1612.5]}}, 'context': 'Sales performance analysis'}`
+responded: [{'text': "Now, let's generate a detailed report with insights:", 'type': 'text', 'index': 0}, {'id': 'toolu_01UwSidGeoAF9cHB3oVUbEqt', 'input': {}, 'name': 'report_generator', 'type': 'tool_use', 'index': 1, 'partial_json': '{"report_type": "detailed", "processed_data": {"basic_stats":{"count":12,"min":1100,"max":1800,"mean":1462.5,"median":1475.0},"variation":{"std_dev":217.97,"variance":47511.36},"distribution":{"skew":0.0183,"quartiles":[1237.5,1475.0,1612.5]}}, "context": "Sales performance analysis"}'}]
+
+[AGENT_TOOL_RESULT (result from report_generator)]:
+Error from data_processor_controller.report_generator: Agent stopped due to exception 'Input to ChatPromptTemplate is missing variables {\\'\"count\"\\', \\'\"std_dev\"\\', \\'\"skew\"\\'}.  Expected: [\\'\"count\"\\', \\'\"skew\"\\', \\'\"std_dev\"\\', \\'input\\'] Received: [\\'chat_history\\', \\'input\\', \\'intermediate_steps\\']\\nNote: if you intended {\"count\"} to be part of the string and not a variable, please escape it with double curly braces like: \\'{{\"count\"}}\\'.\\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_PROMPT_INPUT ' (Traceback (most recent call last):\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/neuro_san/internals/run_context/langchain/core/langchain_run_context.py\", line 497, in ainvoke\n    return_dict: Dict[str, Any] = await agent_executor.ainvoke(inputs, invoke_config)\n                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/chains/base.py\", line 218, in ainvoke\n    raise e\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/chains/base.py\", line 209, in ainvoke\n    await self._acall(inputs, run_manager=run_manager)\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/agents/agent.py\", line 1669, in _acall\n    next_step_output = await self._atake_next_step(\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/agents/agent.py\", line 1463, in _atake_next_step\n    [\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/agents/agent.py\", line 1491, in _aiter_next_step\n    output = await self._action_agent.aplan(\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain/agents/agent.py\", line 616, in aplan\n    async for chunk in self.runnable.astream(\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py\", line 3464, in astream\n    async for chunk in self.atransform(input_aiter(), config, **kwargs):\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py\", line 3446, in atransform\n    async for chunk in self._atransform_stream_with_config(\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py\", line 2321, in _atransform_stream_with_config\n    chunk = await coro_with_context(py_anext(iterator), context)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py\", line 3413, in _atransform\n    async for output in final_pipeline:\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py\", line 1470, in atransform\n    async for ichunk in input:\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py\", line 1470, in atransform\n    async for ichunk in input:\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py\", line 1488, in atransform\n    async for output in self.astream(final, config, **kwargs):\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py\", line 1034, in astream\n    yield await self.ainvoke(input, config, **kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/prompts/base.py\", line 242, in ainvoke\n    return await self._acall_with_config(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py\", line 1990, in _acall_with_config\n    output: Output = await coro_with_context(coro, context)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/prompts/base.py\", line 195, in _aformat_prompt_with_error_handling\n    inner_input_ = self._validate_input(inner_input)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/aakashc/Documents/hyper-builder/hyper-neuro-graph/.venv/lib/python3.12/site-packages/langchain_core/prompts/base.py\", line 183, in _validate_input\n    raise KeyError(\nKeyError: 'Input to ChatPromptTemplate is missing variables {\\'\"count\"\\', \\'\"std_dev\"\\', \\'\"skew\"\\'}.  Expected: [\\'\"count\"\\', \\'\"skew\"\\', \\'\"std_dev\"\\', \\'input\\'] Received: [\\'chat_history\\', \\'input\\', \\'intermediate_steps\\']\\nNote: if you intended {\"count\"} to be part of the string and not a variable, please escape it with double curly braces like: \\'{{\"count\"}}\\'.\\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_PROMPT_INPUT '\n)
+
+[AI]:
+Based on the analysis of the sales data, I can provide the following insights:
+
+1. Overall Performance:
+- The sales values range from $1,100 to $1,800, with an average of $1,462.50
+- The median sales value is $1,475.00, very close to the mean, indicating a balanced distribution
+- There is consistent sales activity with no extreme outliers
+
+2. Variability and Spread:
+- The standard deviation is $217.97, showing moderate variability in sales
+- The interquartile range (IQR) is $375, with:
+  * 25% of sales below $1,237.50
+  * 50% of sales below $1,475.00
+  * 75% of sales below $1,612.50
+
+3. Distribution Characteristics:
+- The data shows a very slight positive skew (0.0183), meaning it's almost symmetrically distributed
+- There are no statistical outliers based on the 1.5 IQR rule
+- The distribution appears healthy with no concerning patterns
+
+4. Performance Trends:
+- The data shows good consistency in sales performance
+- The tight clustering around the mean suggests reliable sales performance
+- The absence of outliers indicates stable sales operations
+
+5. Key Insights:
+- Sales performance is stable and predictable
+- The business maintains consistent sales levels with moderate variability
+- There are no concerning dips or unusual spikes in the data
+- The sales range of $700 ($1,800 - $1,100) suggests good control over sales performance
+
+Recommendations:
+1. Continue maintaining the current stable sales performance
+2. Consider investigating factors behind the highest performing periods ($1,800) to potentially replicate that success
+3. Monitor periods with lower sales ($1,100) to identify any patterns or causes that could be addressed
+4. Use the average of $1,462.50 as a benchmark for future sales targets
+
+The data suggests a healthy and stable sales pattern with no major concerns or anomalies.
+
+[AGENT]:
+```json
+{
+    "caveats": [
+        "Each LLM Branch Node also includes accounting for each of its callees."
+    ],
+    "completion_tokens": 1090.0,
+    "prompt_tokens": 6686.0,
+    "successful_requests": 4.0,
+    "time_taken_in_seconds": 29.01732301712036,
+    "total_cost": 0.036408,
+    "total_tokens": 7776.0
+}
+```
