@@ -4,5 +4,4 @@ logs/
 .idea
 *__pycache__
 artifacts/
-frontend/
-backend/
+/todo-app
