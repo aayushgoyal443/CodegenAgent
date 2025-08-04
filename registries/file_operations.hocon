@@ -1,0 +1,71 @@
+# File Operations Tools Configuration
+# This file contains tool definitions for file operations that can be referenced in other HOCON files
+{
+    # File Reading Tool
+    "read_file_tool": {
+            "name": "read_file",
+            "function": {
+                "description": "Reads the contents of a file from the local filesystem.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "file_path": {
+                            "type": "string",
+                            "description": "Path to the file to read"
+                        },
+                        "start_line": {
+                            "type": "int",
+                            "description": "Starting line number (1-based)",
+                            "default": 1
+                        },
+                        "end_line": {
+                            "type": "int",
+                            "description": "Ending line number (inclusive)",
+                            "default": None
+                        }
+                    },
+                    "required": ["file_path"]
+                }
+            },
+            "class": "file_operations.file_reader.FileReader"
+        },
+
+    # File Writing Tool
+    "file_writer_tool": {
+            "name": "file_writer",
+            "function": {
+                "description": "Writes content to a file on the local filesystem.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "file_path": {
+                            "type": "string",
+                            "description": "Path where the file should be written"
+                        },
+                        "content": {
+                            "type": "string",
+                            "description": "Content to write to the file"
+                        },
+                        "mode": {
+                            "type": "string",
+                            "description": "File mode ('w' for write, 'a' for append)",
+                            "enum": ["w", "a", "w+", "a+"],
+                            "default": "w"
+                        },
+                        "encoding": {
+                            "type": "string",
+                            "description": "File encoding to use",
+                            "default": "utf-8"
+                        },
+                        "create_dirs": {
+                            "type": "boolean",
+                            "description": "Create parent directories if they don't exist",
+                            "default": true
+                        }
+                    },
+                    "required": ["file_path", "content"]
+                }
+            },
+            "class": "file_operations.file_writer.FileWriter"
+        }
+}
