@@ -1,0 +1,33 @@
+# Main Code Generation Configuration
+{
+    # LLM Configuration
+    llm_config: {
+        model_name: "gemini-2.0-flash"
+    }
+    
+    # Execution Limits
+    max_iterations: 500
+    max_execution_seconds: 3600
+    
+    # Features
+    enable_internal_chat: true
+    enable_visualization: true
+    
+    # Include agent and tool definitions
+    include "registries/code_generator.hocon"
+    include "registries/orchestrator.hocon"
+    include "registries/file_operations.hocon"
+    
+    # Tools Configuration
+    tools: [
+        # Orchestrator Agent (Front Man)
+        ${orchestrator_agent}
+        
+        # Code Generator Agent
+        ${code_generator_agent}
+        
+        # File Operations
+        ${read_file_tool}
+        ${file_writer_tool}
+    ]
+}

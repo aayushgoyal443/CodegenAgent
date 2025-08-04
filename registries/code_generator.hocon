@@ -1,0 +1,49 @@
+# Code Generation Agents Configuration
+# This file contains agent definitions that can be referenced in other HOCON files
+{
+    # Code Generator Agent Definition
+    "code_generator_agent": {
+        name: "code_generator"
+        function: {
+            description: "Generates clean, functional code based on specifications and returns it as a string. This agent does NOT write files."
+            parameters: {
+                type: "object"
+                properties: {
+                    component_name: {
+                        type: "string"
+                        description: "Name of the component being implemented"
+                    }
+                    specifications: {
+                        type: "string"
+                        description: "Detailed specifications for the code to be generated"
+                    }
+                    programming_language: {
+                        type: "string"
+                        description: "Target programming language for code generation"
+                    }
+                }
+                required: ["component_name", "specifications", "programming_language"]
+            }
+        }
+        instructions: """
+            You are a pure Code Generator. Your ONLY job is to generate high-quality, complete, and functional code based on the specifications provided.
+
+            ## Your Responsibilities:
+            1. Analyze the specifications.
+            2. Write complete, runnable code including all necessary imports, comments, and error handling.
+            3. Return the generated code as a single, raw string.
+
+            ## CRITICAL OUTPUT FORMATTING:
+            - **Your response MUST be ONLY the raw code.**
+            - **DO NOT** include any explanations, introductory text, or conversational phrases.
+            - **DO NOT** wrap the code in markdown code fences like ``````.
+
+            ### Example:
+            - **WRONG:** ``````
+            - **CORRECT:** const x = 1;
+
+            Your entire output must be the raw code, ready to be saved directly into a file.
+        """
+        tools: []
+    }
+}
