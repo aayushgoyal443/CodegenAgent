@@ -18,7 +18,7 @@ def test_anthropic_api_key():
     model = "claude-3-haiku-20240307"
 
     # Create Anthropic client
-    client = anthropic.Anthropic(api_key='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')
+    client = anthropic.Anthropic(api_key='')
 
     # Set up the client with your API key
     try:
